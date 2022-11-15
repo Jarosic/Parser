@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div align="center">
+    <h3>Query</h3>
+
+    <form action="#"
+          style="margin-top: 5px; margin-bottom: 5px; width: 50%"
+          th:action="@{/find}"
+          method="get">
+
+        <div class="form-row">
+            <div class="col">
+                <input type="text" th:name="auto" class="form-control" placeholder="Auto">
+            </div>
+            <div class="col">
+                <input type="text" th:name="minPrice" class="form-control" placeholder="Min price">
+            </div>
+            <div class="col">
+                <input type="text" th:name="maxPrice" class="form-control" placeholder="Max price">
+            </div>
+            <div class="col">
+                <input type="submit" value="find">
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-5" align="center" style="margin-top: 10px; margin-bottom: 5px">
+            <h3>OLX Content List</h3>
+            <table border="1" class="table table-striped table-responsive-md">
+                <thead>
+                <tr>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>href</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="content:${olxContent}">
+                    <td th:text="${content.title}"></td>
+                    <td th:text="${content.price}"></td>
+                    <td><a th:href="${content.href}"
+                           class="btn btn-primary">Show</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-2">
+        </div>
+
+        <div class="col-5" align="center" style="margin-top: 10px; margin-bottom: 5px">
+            <h3>RIA Content List</h3>
+            <table border="1"
+                   class="table table-striped table-responsive-md">
+                <thead>
+                <tr>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>href</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="content:${riaContent}">
+                    <td th:text="${content.title}"></td>
+                    <td th:text="${content.price}"></td>
+                    <td><a th:href="${content.href}"
+                           class="btn btn-primary">Show</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>
